@@ -47,7 +47,7 @@ function handleKeyPress(str, key) {
   } else if (key.name === 'c') {
     process.exit()
   } else if (key.name === 'return') {
-    const selected = currentIndex < files.dirs.length ? files.dirs[currentIndex-1]: files.files[currentIndex - files.dirs.length - 1].name;
+    let selected = currentIndex <= files.dirs.length ? files.dirs[currentIndex - 1] : files.files[currentIndex - files.dirs.length - 1].name;
     if (currentIndex === 0) {
       currentDir = path.resolve(currentDir, '..');
       currentIndex = 0;
@@ -92,6 +92,7 @@ function handleKeyPress(str, key) {
         });
       }
     }
+    files = getDir(currentDir)
   }
   display(files, currentIndex);
 }
