@@ -1,0 +1,24 @@
+{
+  "name": "terminalfilebrowser",
+  "version": "1.0.0",
+  "description": "Terminal File Browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rasmusaj2/terminalFileBrowser.git"
+  },
+  "author": "Rasmusaj2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rasmusaj2/terminalFileBrowser/issues"
+  },
+  "homepage": "https://github.com/Rasmusaj2/terminalFileBrowser#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "fs": "^0.0.1-security",
+    "inquirer": "^8.0.0"
+  }
+}
