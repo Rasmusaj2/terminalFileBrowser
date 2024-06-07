@@ -17,6 +17,7 @@ function getDir(dir) {
 function display(files, currentIndex) {
   console.clear();
   console.log(currentDir);
+  console.log(currentIndex);
   files.dirs.sort();
   files.dirs.unshift('..');
   files.dirs.forEach((dir, index) => {
@@ -40,12 +41,14 @@ function display(files, currentIndex) {
 function handleKeyPress(str, key) {
   let files = getDir(currentDir);
   if (key.name === 'w') {
-    currentIndex = (currentIndex - 1 + files.dirs.length + files.files.length) % (files.dirs.length + files.files.length);
+    currentIndex = currentIndex === 0 ? (files.dirs.length + files.files.length) : currentIndex -1;
   } else if (key.name === 's') {
-    currentIndex = (currentIndex + 1) % (files.dirs.length + files.files.length);
+    currentIndex = currentIndex >= (files.dirs.length + files.files.length) ? 0 : currentIndex + 1;
+  } else if (key.name === 'c') {
+    process.exit()
   } else if (key.name === 'return') {
-    const selected = currentIndex < files.dirs.length ? files.dirs[currentIndex] : files.files[currentIndex - files.dirs.length].name;
-    if (selected === '..') {
+    const selected = currentIndex < files.dirs.length ? files.dirs[currentIndex-1]: files.files[currentIndex - files.dirs.length - 1].name;
+    if (currentIndex === 0) {
       currentDir = path.resolve(currentDir, '..');
       currentIndex = 0;
     } else {
