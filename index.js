@@ -40,11 +40,11 @@ function display(files, currentIndex) {
 
 function handleKeyPress(str, key) {
   let files = getDir(currentDir);
-  if (key.name === 'w') {
+  if (key.name === 'w' || key.name === 'up') {
     currentIndex = currentIndex === 0 ? (files.dirs.length + files.files.length) : currentIndex -1;
-  } else if (key.name === 's') {
+  } else if (key.name === 's' || key.name === 'down') {
     currentIndex = currentIndex >= (files.dirs.length + files.files.length) ? 0 : currentIndex + 1;
-  } else if (key.name === 'c') {
+  } else if (key.name === 'c' || key.name === 'escape') {
     process.exit()
   } else if (key.name === 'return') {
     let selected = currentIndex <= files.dirs.length ? files.dirs[currentIndex - 1] : files.files[currentIndex - files.dirs.length - 1].name;
